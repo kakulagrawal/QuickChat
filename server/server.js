@@ -3,7 +3,7 @@ import "dotenv/config";
 import cors from "cors";
 import http from "http";
 import { connectDB } from "./lib/db.js";
-import userRouter from "./routes/UserRoutes.js";
+import userRouter from "./routes/userRoutes.js";
 import messageRouter from "./routes/messageRoutes.js";
 import { Server } from "socket.io";
 
@@ -58,7 +58,7 @@ app.use("/api/messages", messageRouter);
 // Connect to MongoDB
 await connectDB();
 
-const PORT = process.env.PORT || 5173;
+const PORT = process.env.PORT || 5001;
 
 if (process.env.NODE_ENV !== "production") {
   server.listen(PORT, () => {
@@ -66,4 +66,4 @@ if (process.env.NODE_ENV !== "production") {
   });
 }
 //Export server for Vercel
-export default server;
+export default app;
